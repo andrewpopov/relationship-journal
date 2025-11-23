@@ -1,0 +1,18 @@
+# Cloudflare Tunnel Configuration
+# Replace <TUNNEL-ID> with your actual tunnel ID from: cloudflared tunnel create relationship-journal
+# Replace <TUNNEL-NAME> with your tunnel name (e.g., relationship-journal)
+
+tunnel: <TUNNEL-ID>
+credentials-file: /home/pi/.cloudflared/<TUNNEL-ID>.json
+
+ingress:
+  # Route all traffic to nginx (which serves both frontend and proxies API)
+  - hostname: your-domain.com
+    service: http://localhost:80
+
+  # Catch-all rule (required)
+  - service: http_status:404
+
+# Optional: Configure logging
+# loglevel: info
+# logfile: /var/log/cloudflared.log

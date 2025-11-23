@@ -1,0 +1,109 @@
+#!/bin/bash
+
+# Cloudflared Tunnel Setup Script for Relationship Journal
+# Run this script with: bash deploy/setup-cloudflared.sh
+
+set -e
+
+echo "=== Cloudflared Tunnel Setup ==="
+echo ""
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Check if cloudflared is installed
+if ! command -v cloudflared &> /dev/null; then
+    echo -e "${YELLOW}cloudflared not found. Installing...${NC}"
+
+    # Detect architecture
+    ARCH=$(uname -m)
+    if [ "$ARCH" == "aarch64" ] || [ "$ARCH" == "arm64" ]; then
+        wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb
+        sudo dpkg -i cloudflared-linux-arm64.deb
+        rm cloudflared-linux-arm64.deb
+    elif [ "$ARCH" == "armv7l" ]; then
+        wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm.deb
+        sudo dpkg -i cloudflared-linux-arm.deb
+        rm cloudflared-linux-arm.deb
+    else
+        echo -e "${RED}Unsupported architecture: $ARCH${NC}"
+        exit 1
+    fi
+
+    echo -e "${GREEN}cloudflared installed successfully${NC}"
+else
+    echo "cloudflared already installed: $(cloudflared --version)"
+fi
+
+echo ""
+echo -e "${GREEN}Step 1: Authenticate with Cloudflare${NC}"
+echo "This will open a browser window. Please login to Cloudflare and authorize the tunnel."
+cloudflared tunnel login
+
+echo ""
+echo -e "${GREEN}Step 2: Create a tunnel${NC}"
+read -p "Enter a name for your tunnel (e.g., relationship-journal): " TUNNEL_NAME
+cloudflared tunnel create "$TUNNEL_NAME"
+
+# Get tunnel ID
+TUNNEL_ID=$(cloudflared tunnel list | grep "$TUNNEL_NAME" | awk '{print $1}')
+
+if [ -z "$TUNNEL_ID" ]; then
+    echo -e "${RED}Failed to create tunnel${NC}"
+    exit 1
+fi
+
+echo -e "${GREEN}Tunnel created successfully!${NC}"
+echo "Tunnel ID: $TUNNEL_ID"
+
+echo ""
+echo -e "${GREEN}Step 3: Configure tunnel${NC}"
+read -p "Enter your domain/subdomain (e.g., journal.example.com): " DOMAIN
+
+# Create config directory
+sudo mkdir -p /etc/cloudflared
+
+# Create config file
+cat > /tmp/cloudflared-config.yml << EOF
+tunnel: $TUNNEL_ID
+credentials-file: /home/pi/.cloudflared/$TUNNEL_ID.json
+
+ingress:
+  - hostname: $DOMAIN
+    service: http://localhost:80
+  - service: http_status:404
+EOF
+
+sudo mv /tmp/cloudflared-config.yml /etc/cloudflared/config.yml
+
+echo ""
+echo -e "${GREEN}Step 4: Configure DNS${NC}"
+echo "Creating DNS record..."
+cloudflared tunnel route dns "$TUNNEL_NAME" "$DOMAIN"
+
+echo ""
+echo -e "${GREEN}Step 5: Install tunnel as a service${NC}"
+sudo cloudflared service install
+sudo systemctl start cloudflared
+sudo systemctl enable cloudflared
+
+echo ""
+echo -e "${GREEN}=== Cloudflared Setup Complete! ===${NC}"
+echo ""
+echo "Your relationship journal is now accessible at: https://$DOMAIN"
+echo ""
+echo "Tunnel details:"
+echo "  - Name: $TUNNEL_NAME"
+echo "  - ID: $TUNNEL_ID"
+echo "  - Domain: $DOMAIN"
+echo ""
+echo "Useful commands:"
+echo "  - Check tunnel status: sudo systemctl status cloudflared"
+echo "  - View tunnel logs: journalctl -u cloudflared -f"
+echo "  - Restart tunnel: sudo systemctl restart cloudflared"
+echo "  - List tunnels: cloudflared tunnel list"
+echo ""
+echo -e "${YELLOW}Note: It may take a few minutes for DNS changes to propagate${NC}"
