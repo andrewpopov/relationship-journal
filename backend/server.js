@@ -26,6 +26,12 @@ app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static(join(__dirname, 'uploads')));
 
+// Serve frontend static files in production
+if (process.env.NODE_ENV === 'production') {
+  const frontendDistPath = join(__dirname, '..', 'frontend', 'dist');
+  app.use(express.static(frontendDistPath));
+}
+
 // Configure multer for file uploads
 const storage = multer.diskStorage({
   destination: async (req, file, cb) => {
@@ -378,6 +384,13 @@ app.delete('/api/goals/:id', authenticateToken, (req, res) => {
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Relationship Journal API is running' });
 });
+
+// Serve frontend for all non-API routes (SPA fallback) in production
+if (process.env.NODE_ENV === 'production') {
+  app.get('*', (req, res) => {
+    res.sendFile(join(__dirname, '..', 'frontend', 'dist', 'index.html'));
+  });
+}
 
 // Initialize database and start server
 initializeDatabase()

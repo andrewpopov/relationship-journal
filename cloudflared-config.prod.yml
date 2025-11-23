@@ -1,0 +1,11 @@
+# Cloudflare Tunnel Configuration for Production
+# This file will be updated with the actual tunnel ID after running:
+# cloudflared tunnel create relationship-journal
+
+tunnel: REPLACE_WITH_TUNNEL_ID
+credentials-file: ~/.cloudflared/REPLACE_WITH_TUNNEL_ID.json
+
+ingress:
+  - hostname: levelup.andrewvpopov.com
+    service: http://127.0.0.1:8081
+  - service: http_status:404
