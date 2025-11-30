@@ -1,43 +1,43 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Heart, BookOpen, Image, Sparkles, Target, MessageCircle, LogOut } from 'lucide-react';
+import { TrendingUp, BookOpen, PenTool, LogOut, Library, Zap } from 'lucide-react';
 
 function Header({ user, onLogout }) {
   const location = useLocation();
 
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path) => {
+    if (path === '/journaling') {
+      return location.pathname.startsWith('/journal') ||
+             location.pathname.startsWith('/gratitude') ||
+             location.pathname.startsWith('/goals') ||
+             location.pathname.startsWith('/memories');
+    }
+    if (path === '/journeys') {
+      return location.pathname.startsWith('/journeys') ||
+             location.pathname.startsWith('/journey');
+    }
+    return location.pathname === path;
+  };
 
   return (
     <header className="header">
       <div className="header-content">
         <h1>
-          <Heart size={24} style={{ display: 'inline', marginRight: '0.5rem' }} />
-          Relationship Journal
+          <TrendingUp size={24} style={{ display: 'inline', marginRight: '0.5rem' }} />
+          Level Up Journal
         </h1>
 
         <nav className="nav">
           <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>
-            <Heart size={18} />
+            <TrendingUp size={18} />
             Home
           </Link>
-          <Link to="/journal" className={`nav-link ${isActive('/journal') ? 'active' : ''}`}>
-            <BookOpen size={18} />
-            Journal
+          <Link to="/journeys" className={`nav-link ${isActive('/journeys') ? 'active' : ''}`}>
+            <Library size={18} />
+            Journeys
           </Link>
-          <Link to="/memories" className={`nav-link ${isActive('/memories') ? 'active' : ''}`}>
-            <Image size={18} />
-            Memories
-          </Link>
-          <Link to="/gratitude" className={`nav-link ${isActive('/gratitude') ? 'active' : ''}`}>
-            <Sparkles size={18} />
-            Gratitude
-          </Link>
-          <Link to="/goals" className={`nav-link ${isActive('/goals') ? 'active' : ''}`}>
-            <Target size={18} />
-            Goals
-          </Link>
-          <Link to="/questions" className={`nav-link ${isActive('/questions') ? 'active' : ''}`}>
-            <MessageCircle size={18} />
-            Questions
+          <Link to="/journaling" className={`nav-link ${isActive('/journaling') ? 'active' : ''}`}>
+            <PenTool size={18} />
+            Journaling
           </Link>
           <button onClick={onLogout} className="icon-button">
             <LogOut size={18} />

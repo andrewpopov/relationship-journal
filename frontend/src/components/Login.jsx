@@ -30,18 +30,28 @@ function Login({ onLogin }) {
         <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
           <Heart size={48} color="#e91e63" fill="#e91e63" />
         </div>
-        <h1>Relationship Journal</h1>
+        <h1>Welcome Back</h1>
+        <p style={{
+          textAlign: 'center',
+          color: '#757575',
+          fontSize: '0.95rem',
+          marginTop: '0.5rem',
+          marginBottom: '1.5rem'
+        }}>
+          Continue your relationship journey together.
+        </p>
 
         {error && <div className="error-message">{error}</div>}
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">Email</label>
             <input
-              type="text"
+              type="email"
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              placeholder="you@example.com"
               required
             />
           </div>
@@ -63,7 +73,7 @@ function Login({ onLogin }) {
         </form>
 
         <p style={{ textAlign: 'center', marginTop: '1rem', color: '#757575' }}>
-          Don't have an account? <Link to="/register" style={{ color: '#e91e63' }}>Register</Link>
+          Don't have an account? <Link to="/register" style={{ color: '#e91e63' }}>Create Account</Link>
         </p>
       </div>
     </div>

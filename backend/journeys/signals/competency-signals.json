@@ -1,0 +1,133 @@
+{
+  "signals": [
+    {
+      "id": "ownership",
+      "name": "Ownership & Getting Things Done",
+      "description": "Taking responsibility for outcomes, driving projects to completion, delivering results",
+      "keywords": ["accountability", "delivery", "execution", "drive", "initiative"],
+      "roles": ["SWE", "Sr SWE", "Staff", "EM", "Sr EM"]
+    },
+    {
+      "id": "ambiguity",
+      "name": "Working in Ambiguity",
+      "description": "Operating effectively with unclear requirements, managing uncertainty, making progress without all answers",
+      "keywords": ["uncertainty", "unclear", "vague", "undefined", "exploratory"],
+      "roles": ["SWE", "Sr SWE", "Staff", "EM", "Sr EM"]
+    },
+    {
+      "id": "collaboration",
+      "name": "Collaboration & Teamwork",
+      "description": "Working effectively with others, cross-functional partnerships, team dynamics",
+      "keywords": ["teamwork", "partnership", "coordination", "cooperation"],
+      "roles": ["SWE", "Sr SWE", "Staff", "EM", "Sr EM"]
+    },
+    {
+      "id": "conflict",
+      "name": "Conflict Resolution",
+      "description": "Handling disagreements, managing difficult conversations, finding resolution",
+      "keywords": ["disagreement", "pushback", "difficult", "tension", "resolution"],
+      "roles": ["SWE", "Sr SWE", "Staff", "EM", "Sr EM"]
+    },
+    {
+      "id": "leadership",
+      "name": "Leadership & Influence",
+      "description": "Leading without authority, influencing decisions, driving change, mentoring",
+      "keywords": ["influence", "persuasion", "mentoring", "leadership", "change"],
+      "roles": ["Sr SWE", "Staff", "EM", "Sr EM"]
+    },
+    {
+      "id": "craft",
+      "name": "Craft & Quality",
+      "description": "Code quality, technical excellence, best practices, reliability",
+      "keywords": ["quality", "excellence", "reliability", "scalability", "performance"],
+      "roles": ["SWE", "Sr SWE", "Staff"]
+    },
+    {
+      "id": "product_sense",
+      "name": "Customer / Product Sense",
+      "description": "Understanding user needs, product thinking, business impact",
+      "keywords": ["user", "customer", "product", "impact", "metrics"],
+      "roles": ["SWE", "Sr SWE", "Staff", "EM", "Sr EM"]
+    },
+    {
+      "id": "people_management",
+      "name": "People Management",
+      "description": "Managing direct reports, coaching, performance management, team building",
+      "keywords": ["management", "coaching", "performance", "1-on-1", "feedback"],
+      "roles": ["EM", "Sr EM"]
+    },
+    {
+      "id": "execution",
+      "name": "Execution & Delivery",
+      "description": "Project management, planning, shipping on time, managing scope",
+      "keywords": ["planning", "execution", "delivery", "shipping", "timeline"],
+      "roles": ["SWE", "Sr SWE", "Staff", "EM", "Sr EM"]
+    },
+    {
+      "id": "learning",
+      "name": "Learning & Growth",
+      "description": "Continuous improvement, feedback incorporation, skill development",
+      "keywords": ["learning", "growth", "feedback", "improvement", "development"],
+      "roles": ["SWE", "Sr SWE", "Staff", "EM", "Sr EM"]
+    }
+  ],
+
+  "company_archetypes": [
+    {
+      "id": "faang",
+      "name": "FAANG / Big Tech",
+      "description": "Large, established tech companies (Amazon, Meta, Google, Apple, Microsoft, Netflix)",
+      "prioritized_signals": ["ownership", "ambiguity", "leadership", "execution", "product_sense"]
+    },
+    {
+      "id": "hypergrowth",
+      "name": "Hypergrowth Startup",
+      "description": "Fast-growing startups with high ambiguity and rapid change",
+      "prioritized_signals": ["ambiguity", "ownership", "execution", "collaboration"]
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise / Established Company",
+      "description": "Large, established non-tech companies with mature processes",
+      "prioritized_signals": ["collaboration", "conflict", "craft", "execution"]
+    }
+  ],
+
+  "roles": [
+    {
+      "id": "swe",
+      "name": "Software Engineer",
+      "level": "IC",
+      "required_signals": ["craft", "collaboration", "learning"],
+      "recommended_signals": ["ownership", "product_sense"]
+    },
+    {
+      "id": "sr_swe",
+      "name": "Senior Software Engineer",
+      "level": "IC",
+      "required_signals": ["craft", "ownership", "leadership"],
+      "recommended_signals": ["product_sense", "ambiguity", "collaboration"]
+    },
+    {
+      "id": "staff",
+      "name": "Staff Engineer",
+      "level": "IC",
+      "required_signals": ["leadership", "ambiguity", "craft", "product_sense"],
+      "recommended_signals": ["ownership", "execution"]
+    },
+    {
+      "id": "em",
+      "name": "Engineering Manager",
+      "level": "Manager",
+      "required_signals": ["people_management", "leadership", "execution"],
+      "recommended_signals": ["collaboration", "conflict", "product_sense"]
+    },
+    {
+      "id": "sr_em",
+      "name": "Senior Engineering Manager",
+      "level": "Manager",
+      "required_signals": ["people_management", "leadership", "execution", "ambiguity"],
+      "recommended_signals": ["product_sense", "collaboration"]
+    }
+  ]
+}

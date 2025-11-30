@@ -17,8 +17,8 @@ api.interceptors.request.use((config) => {
 });
 
 // Auth
-export const register = (username, password, displayName) =>
-  api.post('/auth/register', { username, password, displayName });
+export const register = (username, password) =>
+  api.post('/auth/register', { username, password });
 
 export const login = (username, password) =>
   api.post('/auth/login', { username, password });
@@ -78,6 +78,9 @@ export const getQuestionCategories = () =>
 export const getQuestions = () =>
   api.get('/questions');
 
+export const getTodaysPrompt = () =>
+  api.get('/questions/today');
+
 export const getQuestionsByCategory = (categoryId) =>
   api.get(`/questions/category/${categoryId}`);
 
@@ -92,5 +95,36 @@ export const saveQuestionResponse = (id, response_text) =>
 
 export const deleteQuestionResponse = (questionId) =>
   api.delete(`/questions/${questionId}/response`);
+
+export const getQuestionStatus = (questionId) =>
+  api.get(`/questions/${questionId}/status`);
+
+export const markQuestionDiscussed = (questionId, jointNotes, markAsDiscussed = true) =>
+  api.post(`/questions/${questionId}/discuss`, { jointNotes, markAsDiscussed });
+
+// Journey Book API
+export const getJourneys = () =>
+  api.get('/journeys');
+
+export const getJourney = (id) =>
+  api.get(`/journeys/${id}`);
+
+export const enrollInJourney = (id, startDate) =>
+  api.post(`/journeys/${id}/enroll`, { startDate });
+
+export const getMyJourneys = () =>
+  api.get('/my-journeys');
+
+export const getJourneyTasks = (journeyId) =>
+  api.get(`/my-journeys/${journeyId}/tasks`);
+
+export const getCurrentTasks = () =>
+  api.get('/tasks/current');
+
+export const startTask = (taskId) =>
+  api.post(`/tasks/${taskId}/start`);
+
+export const completeTask = (taskId) =>
+  api.post(`/tasks/${taskId}/complete`);
 
 export default api;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Plus, Trash2, Edit2, X, CheckCircle } from 'lucide-react';
+import { Plus, Trash2, Edit2, X, CheckCircle, Target } from 'lucide-react';
 import { getGoals, createGoal, updateGoal, deleteGoal } from '../api';
 
 function Goals() {
@@ -90,7 +90,15 @@ function Goals() {
 
       {activeGoals.length === 0 && completedGoals.length === 0 ? (
         <div className="empty-state">
-          <p>No goals yet. Start setting goals to grow together!</p>
+          <Target size={64} color="#388e3c" strokeWidth={1.5} style={{ marginBottom: '1rem' }} />
+          <h2 style={{ marginBottom: '0.5rem', fontSize: '1.5rem' }}>No Goals Yet</h2>
+          <p style={{ marginBottom: '1.5rem', color: '#757575' }}>
+            Set goals together and track your progress as a couple. Create shared aspirations and celebrate achievements!
+          </p>
+          <button className="btn-primary" onClick={() => setShowModal(true)}>
+            <Plus size={20} style={{ marginRight: '0.5rem' }} />
+            Set Your First Goal
+          </button>
         </div>
       ) : (
         <>

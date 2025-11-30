@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Plus, Trash2, Edit2, X } from 'lucide-react';
+import { Plus, Trash2, Edit2, X, BookOpen, Lightbulb } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import {
   getJournalEntries,
   createJournalEntry,
@@ -78,16 +79,40 @@ function Journal() {
 
   return (
     <div className="container">
-      <h1 style={{ marginBottom: '2rem' }}>Journal Entries</h1>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
+        <h1 style={{ margin: 0 }}>Journal Entries</h1>
+        <button className="btn-primary" onClick={() => setShowModal(true)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <Plus size={20} />
+          New Entry
+        </button>
+      </div>
 
       {entries.length === 0 ? (
-        <div className="empty-state">
-          <p>No journal entries yet. Start writing to capture your thoughts!</p>
+        <div className="card" style={{ textAlign: 'center', padding: '3rem 2rem' }}>
+          <BookOpen size={48} color="#e91e63" style={{ margin: '0 auto 1rem' }} />
+          <h2 style={{ marginBottom: '0.75rem', color: '#333' }}>No journal entries yet</h2>
+          <p style={{ color: '#757575', marginBottom: '2rem', lineHeight: '1.6' }}>
+            Start writing to capture your thoughts, feelings, and moments together.
+            <br />
+            Or browse our guided prompts for inspiration.
+          </p>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button className="btn-primary" onClick={() => setShowModal(true)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Plus size={18} />
+              Start Writing
+            </button>
+            <Link to="/questions" style={{ textDecoration: 'none' }}>
+              <button className="btn-secondary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <Lightbulb size={18} />
+                Browse Prompts
+              </button>
+            </Link>
+          </div>
         </div>
       ) : (
         <div>
           {entries.map((entry) => (
-            <div key={entry.id} className="card">
+            <div key={entry.id} className="card" style={{ marginBottom: '1rem' }}>
               <div className="card-header">
                 <div>
                   {entry.title && <h3 className="card-title">{entry.title}</h3>}
@@ -99,22 +124,22 @@ function Journal() {
                     })}
                   </p>
                 </div>
+                <div className="card-actions">
+                  <button className="icon-button" onClick={() => handleEdit(entry)} title="Edit entry">
+                    <Edit2 size={18} />
+                  </button>
+                  <button className="icon-button" onClick={() => handleDelete(entry.id)} title="Delete entry">
+                    <Trash2 size={18} />
+                  </button>
+                </div>
               </div>
-              <p className="card-content">{entry.content}</p>
-              <div className="card-actions">
-                <button className="icon-button" onClick={() => handleEdit(entry)}>
-                  <Edit2 size={18} />
-                </button>
-                <button className="icon-button" onClick={() => handleDelete(entry.id)}>
-                  <Trash2 size={18} />
-                </button>
-              </div>
+              <p className="card-content" style={{ whiteSpace: 'pre-wrap' }}>{entry.content}</p>
             </div>
           ))}
         </div>
       )}
 
-      <button className="fab" onClick={() => setShowModal(true)}>
+      <button className="fab" onClick={() => setShowModal(true)} title="New journal entry">
         <Plus size={24} />
       </button>
 

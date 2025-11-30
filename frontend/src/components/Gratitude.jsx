@@ -76,12 +76,26 @@ function Gratitude() {
           <Sparkles size={20} color="#f57c00" />
           <h3 style={{ margin: 0, color: '#f57c00' }}>Today's Prompt</h3>
         </div>
-        <p style={{ fontSize: '1.1rem', margin: 0 }}>{currentPrompt}</p>
+        <p style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>{currentPrompt}</p>
+        <button
+          className="btn-primary"
+          onClick={() => setShowModal(true)}
+          style={{ width: '100%' }}
+        >
+          <Plus size={20} style={{ marginRight: '0.5rem' }} />
+          Write Gratitude
+        </button>
       </div>
+
+      <h2 style={{ marginBottom: '1rem', fontSize: '1.3rem' }}>Your Gratitude Entries</h2>
 
       {entries.length === 0 ? (
         <div className="empty-state">
-          <p>Start your gratitude practice today!</p>
+          <Sparkles size={64} color="#f57c00" strokeWidth={1.5} style={{ marginBottom: '1rem' }} />
+          <h3 style={{ marginBottom: '0.5rem', fontSize: '1.2rem' }}>No Entries Yet</h3>
+          <p style={{ color: '#757575' }}>
+            Start your gratitude practice today using the prompt above!
+          </p>
         </div>
       ) : (
         <div>

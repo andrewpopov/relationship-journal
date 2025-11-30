@@ -1,9 +1,10 @@
 {
-  "name": "relationship-journal",
+  "name": "levelup-journal",
   "version": "1.0.0",
-  "description": "A web application for couples to strengthen their relationship",
+  "description": "A personal growth platform for structured learning through guided journeys",
   "private": true,
   "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "install:all": "cd backend && npm install && cd ../frontend && npm install",
     "dev:backend": "cd backend && npm run dev",
     "dev:frontend": "cd frontend && npm run dev",
@@ -12,12 +13,17 @@
     "build": "cd frontend && npm run build",
     "prod:setup": "npm run install:all && npm run build",
     "prod:start": "pm2 start ecosystem.config.js",
-    "prod:stop": "pm2 stop relationship-journal-app relationship-journal-tunnel",
-    "prod:restart": "pm2 restart relationship-journal-app relationship-journal-tunnel",
+    "prod:stop": "pm2 stop levelup-journal-app levelup-journal-tunnel",
+    "prod:restart": "pm2 restart levelup-journal-app levelup-journal-tunnel",
     "prod:logs": "pm2 logs",
-    "prod:status": "pm2 status"
+    "prod:status": "pm2 status",
+    "capture-screenshots": "node capture-screenshots.js"
   },
-  "keywords": ["relationship", "journal", "couples"],
+  "keywords": ["personal growth", "journal", "learning", "self-improvement", "journeys"],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "concurrently": "^8.2.2"
+  }
 }

@@ -1,0 +1,251 @@
+{
+  "journey": {
+    "id": "behavioral-em",
+    "title": "Engineering Manager Interview Prep",
+    "description": "Master behavioral interviews for engineering leadership roles. Build compelling stories showcasing people leadership, team execution, and strategic impact.",
+    "roles": ["em", "sr_em", "staff_em"],
+    "duration_weeks": 4,
+    "estimated_hours": 7,
+    "is_configurable": true,
+
+    "step0_config": {
+      "title": "Customize Your Prep",
+      "description": "Tailor this journey to your level, target company, and key competencies",
+      "inputs": {
+        "role_selector": {
+          "type": "select",
+          "label": "Your Role",
+          "options": ["em", "sr_em", "staff_em"],
+          "required": true
+        },
+        "company_archetype": {
+          "type": "select",
+          "label": "Target Company Type",
+          "options": ["faang", "hypergrowth", "enterprise"],
+          "required": true
+        },
+        "target_signals": {
+          "type": "multi_checkbox",
+          "label": "Priority Competencies",
+          "description": "Select the signals most important for your target EM role",
+          "options": [
+            "people_management",
+            "execution",
+            "leadership",
+            "collaboration",
+            "conflict",
+            "learning",
+            "product_sense"
+          ],
+          "required": false
+        }
+      }
+    },
+
+    "story_slots": [
+      {
+        "id": "underperformance",
+        "title": "Managing Underperformance / Low Performer",
+        "description": "A time when you had to address significant underperformance in a direct report and improve their trajectory.",
+        "signals": ["people_management", "conflict", "leadership"],
+        "framework": "SPARC",
+        "estimated_minutes": 50,
+        "display_order": 1,
+        "required": true,
+        "tips": [
+          "Show empathy and genuine desire to help them improve",
+          "Explain your diagnostic approach - what's really going on?",
+          "Describe specific feedback and coaching you provided",
+          "Share the outcome - did they improve or did you make a tough call?",
+          "Demonstrate learnings about yourself as a manager"
+        ]
+      },
+      {
+        "id": "team_conflict",
+        "title": "Navigating Team Conflict",
+        "description": "A significant conflict between team members, or between your team and another group, that you had to resolve.",
+        "signals": ["conflict", "collaboration", "people_management"],
+        "framework": "SPARC",
+        "estimated_minutes": 50,
+        "display_order": 2,
+        "required": true,
+        "tips": [
+          "Show emotional intelligence in handling tensions",
+          "Explain how you got to root cause vs. symptoms",
+          "Demonstrate active listening and perspective-taking",
+          "Share how you helped both sides move forward",
+          "Highlight what this taught you about team dynamics"
+        ]
+      },
+      {
+        "id": "hiring_decision",
+        "title": "Hiring / Promotion / Termination Decision",
+        "description": "A critical people decision (hiring, promoting, or letting someone go) and your reasoning.",
+        "signals": ["people_management", "execution", "leadership"],
+        "framework": "SPARC",
+        "estimated_minutes": 50,
+        "display_order": 3,
+        "required": true,
+        "tips": [
+          "Show rigorous decision-making process",
+          "Explain how you gathered diverse perspectives",
+          "Be specific about selection criteria",
+          "Share how you communicated the decision",
+          "Reflect on what happened after and lessons learned"
+        ]
+      },
+      {
+        "id": "team_transformation",
+        "title": "Turning Around a Struggling Team",
+        "description": "A time when you inherited or took over a team with low morale, poor execution, or quality issues and improved them.",
+        "signals": ["leadership", "execution", "people_management"],
+        "framework": "SPARC",
+        "estimated_minutes": 50,
+        "display_order": 4,
+        "required": true,
+        "tips": [
+          "Start with your diagnosis - what was actually broken?",
+          "Show multiple levers you pulled (staffing, process, clarity, coaching)",
+          "Include specific metrics or evidence of improvement",
+          "Share how you built trust and psychological safety",
+          "Discuss how you balanced quick wins with long-term changes"
+        ]
+      },
+      {
+        "id": "cross_org_initiative",
+        "title": "Cross-Functional Initiative with Resistance",
+        "description": "Leading or influencing an initiative that required working across organizations or overcoming resistance.",
+        "signals": ["leadership", "collaboration", "execution"],
+        "framework": "SPARC",
+        "estimated_minutes": 50,
+        "display_order": 5,
+        "required": false,
+        "tips": [
+          "Explain why there was resistance and from whom",
+          "Show how you built coalition and alignment",
+          "Demonstrate stakeholder management and influence",
+          "Share how you kept teams motivated despite obstacles",
+          "Highlight the business impact of the initiative"
+        ]
+      },
+      {
+        "id": "rapid_growth",
+        "title": "Scaling Team / Rapid Growth",
+        "description": "A time when your team grew rapidly or you had to onboard many new people simultaneously.",
+        "signals": ["execution", "leadership", "learning"],
+        "framework": "SPARC",
+        "estimated_minutes": 50,
+        "display_order": 6,
+        "required": false,
+        "tips": [
+          "Describe how you maintained culture during growth",
+          "Show how you scaled processes and systems",
+          "Discuss how you ramped new team members",
+          "Share metrics on retention and performance",
+          "Highlight what was different from managing a stable team"
+        ]
+      },
+      {
+        "id": "learning_growth",
+        "title": "Your Own Learning / Growth as a Manager",
+        "description": "A time when you realized you had a blindspot or needed to grow as a leader, and what you did about it.",
+        "signals": ["learning", "leadership", "people_management"],
+        "framework": "SPARC",
+        "estimated_minutes": 50,
+        "display_order": 7,
+        "required": false,
+        "tips": [
+          "Show genuine self-awareness and humility",
+          "Describe the feedback or trigger that made you aware",
+          "Share specific actions you took to develop",
+          "Include both the struggle and the progress",
+          "Reflect on how this changed your leadership approach"
+        ]
+      },
+      {
+        "id": "customer_focus",
+        "title": "Customer-Centric or Product-Focused Decision",
+        "description": "A time when you led your team to make a decision that prioritized customer/product value, even if harder.",
+        "signals": ["product_sense", "leadership", "execution"],
+        "framework": "SPARC",
+        "estimated_minutes": 50,
+        "display_order": 8,
+        "required": false,
+        "tips": [
+          "Show your understanding of customer needs",
+          "Explain the trade-offs and what you prioritized",
+          "Share how you got your team aligned on the decision",
+          "Highlight the business outcomes",
+          "Reflect on what this taught you about product thinking"
+        ]
+      }
+    ],
+
+    "sparc_micro_prompts": {
+      "situation": [
+        "How big was the team and what was your role?",
+        "What was the organizational context?",
+        "Who were the key stakeholders involved?",
+        "What was the business or team challenge?"
+      ],
+      "problem": [
+        "What made this genuinely difficult to handle?",
+        "What were the conflicting pressures or trade-offs?",
+        "What was at stake for the team, org, or business?",
+        "What was uncertain or ambiguous about the situation?"
+      ],
+      "actions": [
+        "What was your leadership approach?",
+        "What 3-5 key actions did you take?",
+        "How did you involve and get buy-in from your team?",
+        "What conversations or coaching did you provide?",
+        "How did you make the final decision or recommendation?"
+      ],
+      "results": [
+        "What were the concrete outcomes?",
+        "Can you quantify the impact? (team morale, retention, velocity, quality, etc.)",
+        "What feedback did you get from your team and peers?",
+        "How did this affect your credibility or authority?",
+        "What improved as a result of your leadership?"
+      ],
+      "coda": [
+        "What did you learn about yourself as a leader?",
+        "What would you do differently now?",
+        "How has this shaped your management philosophy?",
+        "What broader lessons apply to other situations?",
+        "How do you see this experience informing your future leadership?"
+      ]
+    },
+
+    "follow_up_question_templates": [
+      "How did your team react to your decision?",
+      "What would you do differently in this situation today?",
+      "How did you handle dissent or disagreement?",
+      "What was the hardest part of this for you?",
+      "How did you ensure psychological safety during this?",
+      "What metrics did you track to measure success?",
+      "How did you develop or coach individuals through this?",
+      "What did you learn about your own leadership?",
+      "How did this affect retention on your team?",
+      "What would your team members say about your leadership in this moment?"
+    ],
+
+    "session_templates": {
+      "quick_prep": {
+        "name": "Quick Prep (3 Stories, 40 min)",
+        "slots": ["underperformance", "team_conflict", "hiring_decision"],
+        "description": "Cover core EM competencies for initial interviews"
+      },
+      "standard_em": {
+        "name": "Standard EM Prep (5 Stories, 75-90 min)",
+        "slots": ["underperformance", "team_conflict", "hiring_decision", "team_transformation", "cross_org_initiative"],
+        "description": "Comprehensive coverage for typical EM interviews"
+      },
+      "senior_em": {
+        "name": "Senior EM Prep (8 Stories, 120-150 min)",
+        "slots": ["underperformance", "team_conflict", "hiring_decision", "team_transformation", "cross_org_initiative", "rapid_growth", "learning_growth", "customer_focus"],
+        "description": "Full spectrum for senior manager and director-level roles"
+      }
+    }
+  }
+}

@@ -3,12 +3,20 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
+import Journaling from './components/Journaling';
 import Journal from './components/Journal';
 import Memories from './components/Memories';
 import Gratitude from './components/Gratitude';
 import Goals from './components/Goals';
 import Questions from './components/Questions';
+import DailyQuestion from './components/DailyQuestion';
+import JourneyBook from './components/JourneyBook';
+import JourneyLibrary from './components/JourneyLibrary';
+import JourneyDashboard from './components/JourneyDashboard';
+import JourneyReader from './components/JourneyReader';
 import Header from './components/Header';
+import StorySlotDashboard from './components/behavioral/StorySlotDashboard';
+import StoryBuilder from './components/behavioral/StoryBuilder';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -80,6 +88,16 @@ function App() {
           }
         />
         <Route
+          path="/journaling"
+          element={
+            isAuthenticated ? (
+              <Journaling />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+        <Route
           path="/journal"
           element={
             isAuthenticated ? (
@@ -124,6 +142,76 @@ function App() {
           element={
             isAuthenticated ? (
               <Questions />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+        <Route
+          path="/daily-question"
+          element={
+            isAuthenticated ? (
+              <DailyQuestion user={user} />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+        <Route
+          path="/journey-book"
+          element={
+            isAuthenticated ? (
+              <JourneyBook user={user} />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+        <Route
+          path="/journeys"
+          element={
+            isAuthenticated ? (
+              <JourneyLibrary />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+        <Route
+          path="/my-journeys"
+          element={
+            isAuthenticated ? (
+              <JourneyDashboard user={user} />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+        <Route
+          path="/journey/:journeyId"
+          element={
+            isAuthenticated ? (
+              <JourneyReader user={user} />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+        <Route
+          path="/journey/:journeyId/story-slots"
+          element={
+            isAuthenticated ? (
+              <StorySlotDashboard />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+        <Route
+          path="/journey/:journeyId/story/:slotId"
+          element={
+            isAuthenticated ? (
+              <StoryBuilder />
             ) : (
               <Navigate to="/login" replace />
             )

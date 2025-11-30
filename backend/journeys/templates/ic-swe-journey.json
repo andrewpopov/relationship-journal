@@ -1,0 +1,226 @@
+{
+  "journey": {
+    "id": "behavioral-ic-swe",
+    "title": "IC Software Engineer Interview Prep",
+    "description": "Master behavioral interviews for software engineering roles. Build compelling STAR/SPARC stories across all key competency areas.",
+    "roles": ["swe", "sr_swe", "staff"],
+    "duration_weeks": 4,
+    "estimated_hours": 6,
+    "is_configurable": true,
+
+    "step0_config": {
+      "title": "Customize Your Prep",
+      "description": "Tailor this journey to your role, target company, and key competencies",
+      "inputs": {
+        "role_selector": {
+          "type": "select",
+          "label": "Your Role",
+          "options": ["swe", "sr_swe", "staff"],
+          "required": true
+        },
+        "company_archetype": {
+          "type": "select",
+          "label": "Target Company Type",
+          "options": ["faang", "hypergrowth", "enterprise"],
+          "required": true
+        },
+        "target_signals": {
+          "type": "multi_checkbox",
+          "label": "Priority Competencies",
+          "description": "Select the signals most important for your target role",
+          "options": [
+            "ownership",
+            "ambiguity",
+            "collaboration",
+            "conflict",
+            "leadership",
+            "craft",
+            "product_sense"
+          ],
+          "required": false
+        }
+      }
+    },
+
+    "story_slots": [
+      {
+        "id": "big-impact",
+        "title": "Big, Hard Project / Largest Impact",
+        "description": "Your most impactful technical contribution. Focus on scope, complexity, and measurable results.",
+        "signals": ["ownership", "execution", "craft", "product_sense"],
+        "framework": "SPARC",
+        "estimated_minutes": 45,
+        "display_order": 1,
+        "required": true,
+        "tips": [
+          "Choose a project with measurable business impact",
+          "Focus on YOUR individual contributions, not just 'we'",
+          "Include concrete metrics (latency reduction, revenue increase, etc.)",
+          "Show technical depth and decision-making"
+        ]
+      },
+      {
+        "id": "ambiguity",
+        "title": "Ambiguous / Underspecified Work",
+        "description": "A time when requirements were unclear and you had to navigate uncertainty to deliver value.",
+        "signals": ["ambiguity", "ownership", "product_sense"],
+        "framework": "SPARC",
+        "estimated_minutes": 45,
+        "display_order": 2,
+        "required": true,
+        "tips": [
+          "Emphasize how you clarified requirements",
+          "Show initiative in moving forward despite uncertainty",
+          "Discuss how you validated assumptions",
+          "Demonstrate comfort with incomplete information"
+        ]
+      },
+      {
+        "id": "conflict",
+        "title": "Major Conflict or Disagreement",
+        "description": "A significant technical disagreement with a teammate, manager, or stakeholder.",
+        "signals": ["conflict", "collaboration", "leadership"],
+        "framework": "SPARC",
+        "estimated_minutes": 45,
+        "display_order": 3,
+        "required": true,
+        "tips": [
+          "Show emotional intelligence and professionalism",
+          "Demonstrate active listening and empathy",
+          "Focus on resolution, not blame",
+          "Highlight what you learned about collaboration"
+        ]
+      },
+      {
+        "id": "failure",
+        "title": "Failure / Missed Expectation",
+        "description": "A time when you failed, made a mistake, or didn't meet expectations.",
+        "signals": ["learning", "ownership", "craft"],
+        "framework": "SPARC",
+        "estimated_minutes": 45,
+        "display_order": 4,
+        "required": true,
+        "tips": [
+          "Own the failure completely - no blame shifting",
+          "Show what you learned and how you improved",
+          "Demonstrate resilience and growth mindset",
+          "Include what you'd do differently now"
+        ]
+      },
+      {
+        "id": "above-beyond",
+        "title": "Going Above & Beyond",
+        "description": "A time when you went significantly beyond your job requirements to drive impact.",
+        "signals": ["ownership", "leadership", "initiative"],
+        "framework": "SPARC",
+        "estimated_minutes": 45,
+        "display_order": 5,
+        "required": false,
+        "tips": [
+          "Show intrinsic motivation and passion",
+          "Demonstrate seeing the bigger picture",
+          "Highlight impact beyond your immediate role",
+          "Show how you inspired or enabled others"
+        ]
+      },
+      {
+        "id": "leadership",
+        "title": "Leading Without Formal Authority",
+        "description": "A time when you influenced or led others despite not being their manager.",
+        "signals": ["leadership", "influence", "collaboration"],
+        "framework": "SPARC",
+        "estimated_minutes": 45,
+        "display_order": 6,
+        "required": false,
+        "tips": [
+          "Focus on HOW you built credibility and trust",
+          "Show specific influence tactics you used",
+          "Demonstrate understanding of stakeholder motivations",
+          "Highlight sustainable impact on team or org"
+        ]
+      },
+      {
+        "id": "learning",
+        "title": "Rapid Learning / Growth Story",
+        "description": "A time when you had to quickly learn a new technology, domain, or skill to succeed.",
+        "signals": ["learning", "ambiguity", "craft"],
+        "framework": "SPARC",
+        "estimated_minutes": 45,
+        "display_order": 7,
+        "required": false,
+        "tips": [
+          "Show your learning strategy and approach",
+          "Demonstrate how you applied new knowledge",
+          "Highlight ability to come up to speed quickly",
+          "Show curiosity and growth mindset"
+        ]
+      }
+    ],
+
+    "sparc_micro_prompts": {
+      "situation": [
+        "How big was the system or business impact area?",
+        "Who were the users or stakeholders?",
+        "What was the team size and your role?",
+        "What timeframe are we talking about?"
+      ],
+      "problem": [
+        "Why wasn't this straightforward?",
+        "What made this genuinely difficult?",
+        "What ambiguity or constraints existed?",
+        "What was at stake if you didn't solve this?"
+      ],
+      "actions": [
+        "What were your 3-5 key decisions or moves?",
+        "Focus on 'I' not 'we' - what did YOU do?",
+        "What alternatives did you consider?",
+        "What principles or values guided your decisions?",
+        "How did you bring others along?"
+      ],
+      "results": [
+        "What concrete outcomes happened?",
+        "Can you quantify the impact? (metrics, revenue, latency, etc.)",
+        "How did the business/team/product improve?",
+        "What feedback did you receive?",
+        "What would have happened if you hadn't intervened?"
+      ],
+      "coda": [
+        "What did you learn from this experience?",
+        "What would you do differently now?",
+        "How has this shaped your approach since?",
+        "What broader lessons apply to other situations?"
+      ]
+    },
+
+    "follow_up_question_templates": [
+      "What trade-offs did you consider?",
+      "How did you bring skeptics on board?",
+      "What would you do differently if you could redo this?",
+      "How did you measure success?",
+      "What feedback did you get from stakeholders?",
+      "How did this experience change your approach?",
+      "What was the hardest part of this?",
+      "How did you handle pushback?",
+      "What did you learn about yourself?",
+      "How did you prioritize competing needs?"
+    ],
+
+    "session_templates": {
+      "quick_prep": {
+        "name": "Quick Prep (3 Stories, 30 min)",
+        "slots": ["big-impact", "ambiguity", "conflict"],
+        "description": "Cover the essentials for a first-round or quick interview prep"
+      },
+      "standard_ic": {
+        "name": "Standard IC Prep (5 Stories, 60-90 min)",
+        "slots": ["big-impact", "ambiguity", "conflict", "failure", "above-beyond"],
+        "description": "Comprehensive coverage of key IC competencies"
+      },
+      "senior_ic": {
+        "name": "Senior IC Prep (7 Stories, 90-120 min)",
+        "slots": ["big-impact", "ambiguity", "conflict", "failure", "above-beyond", "leadership", "learning"],
+        "description": "Full spectrum for senior and staff engineer roles"
+      }
+    }
+  }
+}

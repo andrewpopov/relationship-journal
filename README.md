@@ -1,14 +1,19 @@
-# Relationship Journal
+# Level Up Journal
 
-A web application for couples to strengthen their relationship through journaling, sharing memories, expressing gratitude, and setting goals together.
+A personal growth platform for structured learning through guided journeys. Take courses in various areas of life - from relationship building to career development - while maintaining a personal journal, tracking goals, and preserving memories.
 
 ## Features
 
+- **Guided Journeys**: Enroll in structured learning programs ("classes") covering various topics
+- **Journey Library**: Browse and discover journeys including:
+  - A Year of Conversations (couples communication)
+  - Behavioral Interview Mastery (career development)
+  - And more coming soon!
 - **Journal Entries**: Write and save daily thoughts and reflections
-- **Shared Memories**: Upload and organize photos and memories together
-- **Gratitude Prompts**: Daily prompts to express appreciation for each other
-- **Relationship Goals**: Set and track goals as a couple
-- **User Authentication**: Secure login for couples
+- **Gratitude Practice**: Daily prompts to express thankfulness
+- **Goal Tracking**: Set and track personal goals
+- **Memory Preservation**: Upload and organize photos and special moments
+- **User Authentication**: Secure personal accounts
 
 ## Tech Stack
 
@@ -20,7 +25,7 @@ A web application for couples to strengthen their relationship through journalin
 ## Project Structure
 
 ```
-relationship-journal/
+levelup-journal/
 ├── backend/
 │   ├── server.js           # Express server and API routes
 │   ├── database.js         # SQLite database setup
@@ -102,8 +107,8 @@ sudo dpkg -i cloudflared-linux-arm64.deb
 ```bash
 # Clone the repository
 cd /home/pi
-git clone <your-repo-url> relationship-journal
-cd relationship-journal
+git clone <your-repo-url> levelup-journal
+cd levelup-journal
 
 # Setup backend
 cd backend
@@ -120,18 +125,18 @@ npm run build
 ### Step 3: Configure Backend Service
 
 ```bash
-sudo cp deploy/relationship-journal-backend.service /etc/systemd/system/
+sudo cp deploy/levelup-journal-backend.service /etc/systemd/system/
 sudo systemctl daemon-reload
-sudo systemctl enable relationship-journal-backend
-sudo systemctl start relationship-journal-backend
-sudo systemctl status relationship-journal-backend
+sudo systemctl enable levelup-journal-backend
+sudo systemctl start levelup-journal-backend
+sudo systemctl status levelup-journal-backend
 ```
 
 ### Step 4: Configure nginx
 
 ```bash
-sudo cp deploy/nginx.conf /etc/nginx/sites-available/relationship-journal
-sudo ln -s /etc/nginx/sites-available/relationship-journal /etc/nginx/sites-enabled/
+sudo cp deploy/nginx.conf /etc/nginx/sites-available/levelup-journal
+sudo ln -s /etc/nginx/sites-available/levelup-journal /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl restart nginx
 ```
@@ -143,7 +148,7 @@ sudo systemctl restart nginx
 cloudflared tunnel login
 
 # Create a tunnel
-cloudflared tunnel create relationship-journal
+cloudflared tunnel create levelup-journal
 
 # Copy the tunnel ID from output
 # Update deploy/cloudflared-config.yml with your tunnel ID
@@ -169,7 +174,7 @@ In your Cloudflare dashboard:
 ## Updating the Application
 
 ```bash
-cd /home/pi/relationship-journal
+cd /home/pi/levelup-journal
 
 # Pull latest changes
 git pull
@@ -177,7 +182,7 @@ git pull
 # Update backend
 cd backend
 npm install --production
-sudo systemctl restart relationship-journal-backend
+sudo systemctl restart levelup-journal-backend
 
 # Update frontend
 cd ../frontend
@@ -190,19 +195,19 @@ sudo systemctl restart nginx
 
 ```bash
 # Create backup
-cp /home/pi/relationship-journal/backend/relationship-journal.db ~/backups/relationship-journal-$(date +%Y%m%d).db
+cp /home/pi/levelup-journal/backend/levelup-journal.db ~/backups/levelup-journal-$(date +%Y%m%d).db
 
 # Setup automatic backups with cron
 crontab -e
-# Add: 0 2 * * * cp /home/pi/relationship-journal/backend/relationship-journal.db ~/backups/relationship-journal-$(date +\%Y\%m\%d).db
+# Add: 0 2 * * * cp /home/pi/levelup-journal/backend/levelup-journal.db ~/backups/levelup-journal-$(date +\%Y\%m\%d).db
 ```
 
 ## Troubleshooting
 
 ### Backend not starting
 ```bash
-sudo systemctl status relationship-journal-backend
-journalctl -u relationship-journal-backend -f
+sudo systemctl status levelup-journal-backend
+journalctl -u levelup-journal-backend -f
 ```
 
 ### Frontend not loading

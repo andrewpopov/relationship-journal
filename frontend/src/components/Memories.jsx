@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Plus, Trash2, X } from 'lucide-react';
+import { Plus, Trash2, X, Camera } from 'lucide-react';
 import { getMemories, createMemory, deleteMemory } from '../api';
 
 function Memories() {
@@ -79,7 +79,15 @@ function Memories() {
 
       {memories.length === 0 ? (
         <div className="empty-state">
-          <p>No memories yet. Start creating your collection of special moments!</p>
+          <Camera size={64} color="#e91e63" strokeWidth={1.5} style={{ marginBottom: '1rem' }} />
+          <h2 style={{ marginBottom: '0.5rem', fontSize: '1.5rem' }}>No Memories Yet</h2>
+          <p style={{ marginBottom: '1.5rem', color: '#757575' }}>
+            Start creating your collection of special moments! Capture photos and memories from your relationship journey.
+          </p>
+          <button className="btn-primary" onClick={() => setShowModal(true)}>
+            <Plus size={20} style={{ marginRight: '0.5rem' }} />
+            Add Your First Memory
+          </button>
         </div>
       ) : (
         <div className="grid">
